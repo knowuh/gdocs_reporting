@@ -1,5 +1,21 @@
 
 Install:
-
 git clone git://github.com/knowuh/gdocs_reporting.git
 rake install
+
+Usage:
+
+require 'gdocs_reporting'
+GdocsReporting::WebReporter.run
+
+<answer prompts>
+
+
+
+TODO:
+* Too many items to mention.
+* When a sheet doesn't exist, prompt to create it.
+* Prompt for columns to update in sheet.
+* Some documentation.
+* Save previous answers to prompts in yaml file?
+* Ruby Cocoa version which uses keychain ?
