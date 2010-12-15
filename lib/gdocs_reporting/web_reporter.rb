@@ -1,6 +1,5 @@
 require 'net/http'
 require 'benchmark'
-require 'sheet_reporter'
 module GdocsReporting
   class WebReporter < SheetReporter
     attr_accessor :page_name, :output_rows, :input_row

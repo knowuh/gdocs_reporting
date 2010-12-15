@@ -1,4 +1,3 @@
-require 'sheet_reporter'
 
 module GdocsReporting
   class SarReporter < SheetReporter
