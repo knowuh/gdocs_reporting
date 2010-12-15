@@ -14,6 +14,8 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "gdocs_reporting"
   s.add_dependency('highline')
+  s.add_dependency('bundler')
+  s.add_dependency('rake')
   s.add_dependency('google-spreadsheet-ruby')
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
