@@ -4,7 +4,7 @@ git clone git://github.com/knowuh/gdocs_reporting.git
 rake install
 
 Usage:
-
+require 'rubygems'
 require 'gdocs_reporting'
 GdocsReporting::WebReporter.run
 
