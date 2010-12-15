@@ -6,6 +6,7 @@ module GdocsReporting
                   :session
 
     def initialize
+      HighLine.track_eof = false
       self.email    = ask("Google account email: ")             { |q| q.default = "your_account@google.com" }
       self.password = ask("Google account password: ")          { |q| q.default = "password"; q.echo = "*"}
       self.session = GoogleSpreadsheet.login(self.email,self.password)
