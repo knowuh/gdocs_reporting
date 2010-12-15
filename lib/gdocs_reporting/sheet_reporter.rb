@@ -7,7 +7,7 @@ module GdocsReporting
                   :session
 
     def initialize
-      self.email    = ask("Google account email: ")             { |q| q.default = "npaessel@concord.org" }
+      self.email    = ask("Google account email: ")             { |q| q.default = "your_account@google.com" }
       self.password = ask("Google account password: ")          { |q| q.default = "password"; q.echo = "*"}
       self.session = GoogleSpreadsheet.login(self.email,self.password)
     end

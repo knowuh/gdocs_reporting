@@ -8,7 +8,7 @@ module GdocsReporting
       super
       self.sheet    = ask("Sheet name: ") { |q| q.default = "Seymour Audit" }
       self.page     = ask("Page name:  ") { |q| q.default = "sar_data" }
-      self.sar_host = ask("sar host:   ") { |q| q.default = "seymour.concord.org" }
+      self.sar_host = ask("sar host:   ") { |q| q.default = "some.random.host.org" }
     end
     ## sar specific things here:
     def remote_command(command)
