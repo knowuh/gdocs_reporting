@@ -14,6 +14,10 @@ module GdocsReporting
     def sheet=(name)
       if defined? name
         @sheet = self.session.spreadsheets.find { |s| s.title == name }
+        unless @sheet
+          puts "Warning: sheet #{name} not found, making a new one"
+          @sheet = self.session.create_spreadsheet(name)
+        end
       end
       return @sheet
     end
@@ -25,6 +29,10 @@ module GdocsReporting
     def page=(name)
       if defined? name
         @page = self.sheet.worksheets.find  { |w| w.title == name  }
+      end
+      unless @page
+        puts "Warning: page #{name} not found, making a new one"
+        @page = self.sheet.add_worksheet(name)
       end
       return @page
     end
