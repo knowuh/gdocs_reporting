@@ -2,14 +2,19 @@ require 'net/http'
 require 'benchmark'
 module GdocsReporting
   class WebReporter < SheetReporter
-    attr_accessor :page_name, :output_rows, :input_row
+    attr_accessor :page_name, :output_rows, :input_row, :poll_interval
 
     def initialize
       super
-      self.sheet = ask("Sheet name: ") { |q| q.default = "Seymour Audit" }
-      self.page  = ask("Page name:  ") { |q| q.default = "Production Web Apps" }
-      self.input_row   = 2
-      self.output_rows = [5,6,7]
+      self.sheet = ask("Sheet name: ") { |q| q.default = "Automated Tests" }
+      self.page  = ask("Page name:  ") { |q| q.default = "Server response Times" }
+      self.input_row    = ask("       Host (input) row: ") { |q| q.default = 2 }
+      status_row        = ask("       Web response row: ") { |q| q.default = 5 }
+      request_time_row  = ask("  Web response time row: ") { |q| q.default = 6 }
+      timestamp_row     = ask("          Timestamp row: ") { |q| q.default = 7 }
+
+      self.poll_interval= ask("Poll Interval (seconds): ") { |q| q.default = 120 }
+      self.output_rows = [status_row,request_time_row,timestamp_row]
     end
     
     def check_host(url_string)
@@ -46,20 +51,20 @@ module GdocsReporting
       end
     end
     
-    def deamonize(interval=120)
+    def deamonize(_interval=120)
       error_count = 0
       while (true)
         begin
           self.check_hosts
         rescue
           error_count = error_count + 1;
-          delay = error_count * error_count * interval
+          delay = error_count * error_count * _interval
           puts "Error (#{error_count}): $!"
           sleep (delay)
         else
           error_count = 0
         end
-        sleep(interval)
+        sleep(_interval)
       end
     end
     def self.run
