@@ -1,0 +1,5 @@
+
+Intall:
+
+git clone git://github.com/knowuh/gdocs_reporting.git
+rake install
