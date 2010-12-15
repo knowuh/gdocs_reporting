@@ -1,6 +1,6 @@
 
 This is a super-thin wrapper around google-spreadsheet-ruby.
-Its a nascent project to monitor web applications directly to google spreadsheets.
+Its a nascent project to monitor web applications directly to google spreadsheets ( https://github.com/gimite/google-spreadsheet-ruby ).
 
 Warning:
 This idea isn't fully baked yet, and it won't work right out of the box.
