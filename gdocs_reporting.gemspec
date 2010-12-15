@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Noah Paessel"]
   s.email       = ["knowuh@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{proof of concept gem for reporting to a goold spreadsheet}
-  s.description = %q{proof of concept gem for reporting to a goold spreadsheet}
+  s.summary     = %q{proof of concept gem for reporting to a google spreadsheet}
+  s.description = %q{proof of concept gem for reporting to a google spreadsheet}
 
   s.rubyforge_project = "gdocs_reporting"
   s.add_dependency('highline')
