@@ -2,27 +2,30 @@
 This is a super-thin wrapper around google-spreadsheet-ruby.
 Its a nascent project to monitor web applications directly to google spreadsheets ( https://github.com/gimite/google-spreadsheet-ruby ).
 
+Unglamorous Video Demonstrating what this does:
+
 Warning:
 This idea isn't fully baked yet, and it won't work right out of the box.
 
 
 Install:
 git clone git://github.com/knowuh/gdocs_reporting.git
+cd gdocs_reporting
 rake install
 
 Sample Usage:
-require 'rubygems'
-require 'gdocs_reporting'
-GdocsReporting::WebReporter.run
+command line:
+ruby -rubygems -e 'require "gdocs_reporting"; GdocsReporting::WebReporter.run'
 
-<answer prompts>
-you will want to look at, and possibly modify web_reporter.rb to suite you needs.
+irb:
+ require 'rubygems'
+ require 'gdocs_reporting'
+ GdocsReporting::WebReporter.run
+
 
 
 TODO:
 * Too many items to mention.
-* When a sheet doesn't exist, prompt to create it.
-* Prompt for columns to update in sheet.
 * Some documentation.
 * Save previous answers to prompts in yaml file?
 * Ruby Cocoa version which uses keychain ?
