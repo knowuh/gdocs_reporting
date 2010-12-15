@@ -2,12 +2,12 @@
 This is a super-thin wrapper around google-spreadsheet-ruby.
 Its a nascent project to monitor web applications directly to google spreadsheets ( https://github.com/gimite/google-spreadsheet-ruby ).
 
-Unglamorous Video Demonstrating what this does:
 
 Warning:
 This idea isn't fully baked yet, and it won't work right out of the box.
 
-Half Baked Demo: http://bit.ly/guk04P
+
+Un-glamorous Half-Baked Demo: http://bit.ly/guk04P
 
 Install:
 git clone git://github.com/knowuh/gdocs_reporting.git
