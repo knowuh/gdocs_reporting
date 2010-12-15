@@ -6,17 +6,15 @@ module GdocsReporting
 
     def initialize
       super
-      self.sheet        = ask("              Sheet name: ") { |q| q.default = "Automated Tests" }
-      self.page         = ask("               Page name: ") { |q| q.default = "Server response Times" }
-      self.input_column = ask("        Host (input) row: ") { |q| q.default = 2 }
-      status_row        = ask("        Web response row: ") { |q| q.default = 5 }
-      request_time_row  = ask("   Web response time row: ") { |q| q.default = 6 }
-      timestamp_row     = ask("           Timestamp row: ") { |q| q.default = 7 }
-      self.poll_interval = ask("Poll Interval (seconds): ") { |q| q.default = 30 }
-
+      self.sheet         = ask("               Sheet name: ") { |q| q.default = "URL Tests" }
+      self.page          = ask("                Page name: ") { |q| q.default = "Response Times" }
+      self.input_column  = ask("       URL (input) column: ") { |q| q.default = 1; q.answer_type = Integer}
+      status_column      = ask("   response status column: ") { |q| q.default = self.input_column + 1; q.answer_type = Integer }
+      request_time       = ask("response time (ms) column: ") { |q| q.default = status_column + 1; q.answer_type = Integer}
+      timestamp_column   = ask("         Timestamp column: ") { |q| q.default = request_time + 1; q.answer_type = Integer }
+      self.poll_interval = ask("  Poll Interval (seconds): ") { |q| q.default = 120; q.answer_type = Integer }
       self.poll_interval = self.poll_interval.to_i
-      self.input_column  = self.input_column.to_i
-      self.output_rows = [status_row.to_i,request_time_row.to_i,timestamp_row.to_i]
+      self.output_rows = [status_column,request_time,timestamp_column]
     end
     
     def check_host(url_string)
@@ -42,7 +40,7 @@ module GdocsReporting
 
     def check_hosts
       update_rows(self.input_column,self.output_rows) do |input,outputs|
-        if ( input =~ /\.org/ )
+        unless input.empty?
           input = "http://#{input}" unless (input =~ /http/) 
           input = "#{input}/" unless (input =~ /\/$/)
           results,time = check_host(input)
